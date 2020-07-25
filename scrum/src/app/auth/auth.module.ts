@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule  } from '@angular/common/http'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -42,6 +42,8 @@ import { MatCardModule } from '@angular/material/card';
 
     
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+
   entryComponents: [LoginComponent,RegisterComponent],
 
 })

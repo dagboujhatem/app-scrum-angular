@@ -25,7 +25,7 @@ export class AuthService {
     this.currentUser = this.currentUserSubject.asObservable();
 
   }
-  url = 'https://beorganized.netlify.app/api/auth/'
+  url = 'http://bescrum.herokuapp.com/api/auth/'
 
   public get currentUserValue(): any {
     return this.currentUserSubject.value;
