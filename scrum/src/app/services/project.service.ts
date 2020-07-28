@@ -1,3 +1,4 @@
+import { Todo } from './models/todo';
 import { Project } from './models/project';
 import { TokenStorageService } from './token-storage.service';
 import { Injectable } from '@angular/core';
@@ -13,10 +14,10 @@ const httpOptions = {
 export class ProjectService {
 
   constructor(private http:HttpClient,  private tokenStorage:TokenStorageService) { }
-  URL1 = 'http://localhost:9000/api/project/';
-  URL2 = 'http://localhost:9000/userStory/';
-  URL3 = 'http://localhost:9000/taches/';
-  URL4 = 'http://localhost:9000/sprints/';
+  URL1 = 'https://bescrum.herokuapp.com/api/project/';
+  URL2 = 'https://bescrum.herokuapp.com/userStory/';
+  URL3 = 'https://bescrum.herokuapp.com/taches/';
+  URL4 = 'https://bescrum.herokuapp.com/sprints/';
 
 
   userConnecter = this.tokenStorage.getUser();
@@ -65,4 +66,23 @@ export class ProjectService {
   deleteSprint (id): Observable<any>{
     return this.http.get(`${this.URL4}` + 'deleteSprint' + '/' + `${id}` , httpOptions)
   }
+  updatetaches(todo:Todo): Observable<any> {
+    return this.http.post(`${this.URL3}` + 'update', todo, httpOptions)
+  }
+  gettaches(projectId,idSprint): Observable<Todo[]>{
+    if (idSprint)
+    return this.http.get<Todo[]>(`${this.URL3}` + 'getTasksBySprint' + '/'+`${idSprint}`,httpOptions);
+    else 
+    return this.http.get<Todo[]>(`${this.URL4}` + 'getCurrentSprint' + '/' +`${projectId}`, httpOptions );
+  }
+  filter(tab,property){
+    return tab.filter(
+      (todo)=>{
+        return todo.state===property
+      }
+    )
+    }
+   // addtaches(todo:Todo, sprintId):Observable<Todo>{
+    //  return this.http.post(`${this.URL3}` + 'add-taches' + )
+    //}
 }

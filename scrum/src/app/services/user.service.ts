@@ -14,7 +14,7 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  URL1 = 'http://localhost:9000/user/';
+  URL1 = 'https://bescrum.herokuapp.com/user/';
 
   getAllUsers(): Observable<any> {
     return this.httpClient.get(`${this.URL1}` + 'getall');

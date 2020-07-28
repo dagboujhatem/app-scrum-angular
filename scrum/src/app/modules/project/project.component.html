@@ -14,15 +14,16 @@
                     Name of project is required *
                   </mat-error>
                 </mat-form-field>
-  
-                <mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
                   <input matInput placeholder="Desciption..." rows="2" cols="50" formControlName="description"
                     required>
                   <mat-error *ngIf="form.hasError('required', 'description')">
                     Description of project is required *
                   </mat-error>
                 </mat-form-field>
-                <mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
                     <input matInput placeholder="Technologie..." rows="2" cols="50" formControlName="technologies"
                       required>
                     <mat-error *ngIf="form.hasError('required', 'technologies')">

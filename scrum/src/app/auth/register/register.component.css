@@ -13,4 +13,6 @@
       color: rgb(83, 81, 81); }
      
    
-  
+      .example-full-width{
+        width: 100%;
+      }

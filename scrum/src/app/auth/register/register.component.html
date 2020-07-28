@@ -2,16 +2,16 @@
 <mat-divider></mat-divider>
 <mat-dialog-content>
             
-            <mat-form-field [formGroup]="registerForm">
+            <mat-form-field [formGroup]="registerForm" class="example-full-width">
               <input matInput placeholder="Username" formControlName="username">
               <mat-error *ngIf="registerForm.hasError('required', 'username')">
                   Username is required *
               </mat-error>
             </mat-form-field>
 
-           
+            <br>
 
-            <mat-form-field [formGroup]="registerForm">
+            <mat-form-field [formGroup]="registerForm" class="example-full-width">
               <input matInput placeholder="Email" formControlName="email">
 
               <mat-error *ngIf="registerForm.hasError('required', 'email')">
@@ -25,11 +25,11 @@
 
             </mat-form-field>
 
-           
+            <br>
 
            
 
-            <mat-form-field [formGroup]="registerForm">
+            <mat-form-field [formGroup]="registerForm" class="example-full-width">
               <input matInput type="password" placeholder="Password" formControlName="password">
 
               <mat-error *ngIf="registerForm.hasError('required','password')">
