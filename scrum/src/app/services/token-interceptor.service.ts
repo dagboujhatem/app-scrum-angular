@@ -13,8 +13,12 @@ export class TokenInterceptorService {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     let authReq = req;
     const token = this.lgs.loggedIn();
+    const headers = req.headers;
+    headers.set('Access-Control-Allow-Origin','*');
+    headers.set('Access-Control-Allow-Methods','GET,POST,PATCH,DELETE,PUT,OPTIONS');
+    headers.set('Access-Control-Allow-Headers','Origin, Content-Type, X-Auth-Token, content-type');
     if (token != null) {
-      authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
+      authReq = req.clone({ headers: headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
     }
     return next.handle(authReq);
   }

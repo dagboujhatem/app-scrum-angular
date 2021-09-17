@@ -6,7 +6,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'content-type': 'application/json' })
+  headers: new HttpHeaders(
+    { 
+      'content-type': 'application/json',
+      'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Methods':'GET,POST,PATCH,DELETE,PUT,OPTIONS',
+      'Access-Control-Allow-Headers':'Origin, Content-Type, X-Auth-Token, content-type'
+    })
 };
 @Injectable({
   providedIn: 'root'
@@ -24,7 +30,7 @@ export class ProjectService {
   usernameConnecter = this.userConnecter.username;
 
   getProjectById(id) : Observable<any>{
-    return this.http.get(`${this.URL1}` + 'project' + '/' + `${id}`, httpOptions )
+    return this.http.get(`${this.URL1}` + 'project' + '/' + `${id}` )
   }
 
   getProjects(): Observable<any>{
